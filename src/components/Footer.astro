@@ -1,0 +1,42 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-slate-900 text-slate-300 border-t border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 font-bold text-xl text-white mb-4">
+          <span class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm">ACG</span>
+          <span>PT Adiya Cahaya Gemilang</span>
+        </div>
+        <p class="text-slate-400 text-sm max-w-sm mb-4 leading-relaxed">
+          Mitra profesional terpercaya dalam menghadirkan solusi unggul, inovatif, dan berkelanjutan untuk berbagai sektor industri di Indonesia.
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold text-sm tracking-wider uppercase mb-4">Navigasi</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/" class="hover:text-blue-400 transition-colors">Beranda</a></li>
+          <li><a href="/about" class="hover:text-blue-400 transition-colors">Tentang Kami</a></li>
+          <li><a href="/services" class="hover:text-blue-400 transition-colors">Layanan</a></li>
+          <li><a href="/contact" class="hover:text-blue-400 transition-colors">Kontak</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-semibold text-sm tracking-wider uppercase mb-4">Kontak</h3>
+        <p class="text-slate-400 text-sm leading-relaxed mb-2">
+          Indonesia
+        </p>
+        <p class="text-slate-400 text-sm">Email: info@adiyacahayagemilang.co.id</p>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 mt-8 pt-8 text-center text-xs text-slate-500">
+      &copy; {currentYear} PT Adiya Cahaya Gemilang. Seluruh hak cipta dilindungi.
+    </div>
+  </div>
+</footer>
+

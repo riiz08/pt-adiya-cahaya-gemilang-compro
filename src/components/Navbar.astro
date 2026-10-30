@@ -1,0 +1,46 @@
+---
+const navLinks = [
+  { name: 'Beranda', href: '/' },
+  { name: 'Tentang Kami', href: '/about' },
+  { name: 'Layanan', href: '/services' },
+  { name: 'Kontak', href: '/contact' },
+];
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center gap-2 font-bold text-xl text-blue-700 tracking-tight">
+          <span class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm">ACG</span>
+          <span>PT Adiya Cahaya Gemilang</span>
+        </a>
+      </div>
+
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-slate-600 hover:text-blue-600 transition-colors"
+          >
+            {link.name}
+          </a>
+        ))}
+        <a
+          href="/contact"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-semibold"
+        >
+          Hubungi Kami
+        </a>
+      </nav>
+
+      <!-- Mobile menu button (simple display for now) -->
+      <div class="flex md:hidden">
+        <a href="/contact" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-md font-semibold">
+          Hubungi
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
