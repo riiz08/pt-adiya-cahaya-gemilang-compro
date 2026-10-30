@@ -9,7 +9,7 @@ import { siteConfig } from '../data/site';
     <div class="flex items-center justify-between h-20">
       
       <!-- Brand Logo & Name -->
-      <a href="#beranda" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1">
+      <a href="#beranda" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1 min-h-[44px]">
         <Image
           src={logoImg}
           alt={`Logo ${siteConfig.name}`}
@@ -20,7 +20,7 @@ import { siteConfig } from '../data/site';
           <span class="font-heading font-bold text-base sm:text-lg text-primary tracking-tight leading-tight group-hover:text-primary-dark transition-colors">
             {siteConfig.name}
           </span>
-          <span class="text-xs text-slate-500 font-medium tracking-wide">
+          <span class="text-xs text-slate-600 font-medium tracking-wide">
             {siteConfig.tagline}
           </span>
         </div>
@@ -31,7 +31,7 @@ import { siteConfig } from '../data/site';
         {siteConfig.navLinks.map((item) => (
           <a
             href={item.href}
-            class="px-3.5 py-2 text-text-main hover:text-primary rounded-md transition-colors hover:bg-slate-50 font-semibold"
+            class="px-3.5 py-2.5 min-h-[44px] flex items-center text-text-main hover:text-primary rounded-md transition-colors hover:bg-slate-50 font-semibold"
           >
             {item.label}
           </a>
@@ -44,7 +44,7 @@ import { siteConfig } from '../data/site';
           href={siteConfig.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 border border-primary/20"
+          class="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 border border-primary/20"
         >
           <span>Hubungi Kami</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -58,7 +58,7 @@ import { siteConfig } from '../data/site';
         <button
           type="button"
           id="navbar-toggle-btn"
-          class="p-2.5 rounded-lg text-slate-600 hover:text-primary hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary"
+          class="p-2.5 min-w-[48px] min-h-[48px] flex items-center justify-center rounded-lg text-slate-700 hover:text-primary hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer"
           aria-expanded="false"
           aria-controls="mobile-nav-menu"
           aria-label="Buka menu navigasi"

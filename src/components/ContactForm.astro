@@ -1,0 +1,175 @@
+---
+import { siteConfig } from '../data/site';
+import { servicesData } from '../data/services';
+---
+
+<div class="bg-white rounded-2xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-md">
+  <div class="mb-6">
+    <h3 class="text-2xl font-heading font-bold text-primary-dark mb-2">
+      Formulir Konsultasi Proyek
+    </h3>
+    <p class="text-sm text-slate-600 leading-relaxed font-normal">
+      Isi formulir di bawah ini untuk terhubung langsung dengan tim estimasi teknis kami melalui WhatsApp.
+    </p>
+  </div>
+
+  <form id="consultation-form" class="space-y-5" novalidate>
+    <!-- Nama Lengkap -->
+    <div>
+      <label for="form-name" class="block text-sm font-semibold text-slate-800 mb-1.5">
+        Nama Lengkap <span class="text-rose-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="form-name"
+        name="name"
+        required
+        placeholder="Contoh: Bpk. Hendra Wijaya"
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm transition-all text-slate-900 bg-white"
+        aria-describedby="name-error"
+      />
+      <p id="name-error" class="hidden text-xs text-rose-600 mt-1 font-medium">Mohon masukkan nama lengkap Anda.</p>
+    </div>
+
+    <!-- Jenis Pekerjaan -->
+    <div>
+      <label for="form-service" class="block text-sm font-semibold text-slate-800 mb-1.5">
+        Jenis Pekerjaan GRC <span class="text-rose-500">*</span>
+      </label>
+      <select
+        id="form-service"
+        name="service"
+        required
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm transition-all text-slate-900 bg-white"
+        aria-describedby="service-error"
+      >
+        <option value="" disabled selected>Pilih jenis elemen GRC...</option>
+        {servicesData.items.map((svc) => (
+          <option value={svc.title}>{svc.title}</option>
+        ))}
+        <option value="Kustomisasi Khusus / Desain Baru">Kustomisasi Khusus / Desain Baru</option>
+      </select>
+      <p id="service-error" class="hidden text-xs text-rose-600 mt-1 font-medium">Mohon pilih salah satu jenis pekerjaan.</p>
+    </div>
+
+    <!-- Lokasi Proyek -->
+    <div>
+      <label for="form-location" class="block text-sm font-semibold text-slate-800 mb-1.5">
+        Lokasi Proyek Bangunan <span class="text-rose-500">*</span>
+      </label>
+      <input
+        type="text"
+        id="form-location"
+        name="location"
+        required
+        placeholder="Contoh: Cibinong, Sentul, atau Jakarta"
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm transition-all text-slate-900 bg-white"
+        aria-describedby="location-error"
+      />
+      <p id="location-error" class="hidden text-xs text-rose-600 mt-1 font-medium">Mohon cantumkan kota atau lokasi proyek.</p>
+    </div>
+
+    <!-- Catatan / Kebutuhan -->
+    <div>
+      <label for="form-message" class="block text-sm font-semibold text-slate-800 mb-1.5">
+        Catatan / Estimasi Kebutuhan <span class="text-rose-500">*</span>
+      </label>
+      <textarea
+        id="form-message"
+        name="message"
+        rows="3"
+        required
+        placeholder="Jelaskan kebutuhan ringkas (mis. perkiraan luas, ketinggian, atau ketersediaan gambar kerja)"
+        class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-sm transition-all text-slate-900 bg-white resize-y min-h-[90px]"
+        aria-describedby="message-error"
+      ></textarea>
+      <p id="message-error" class="hidden text-xs text-rose-600 mt-1 font-medium">Mohon tuliskan pesan atau kebutuhan Anda.</p>
+    </div>
+
+    <!-- Submit Button (Direct to WhatsApp) -->
+    <div class="pt-2">
+      <button
+        type="submit"
+        id="submit-consultation-btn"
+        class="w-full inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-accent hover:bg-[#b58f3e] text-slate-900 font-heading font-bold text-base shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-accent/40"
+      >
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.971.53 1.761.815 2.796.815 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.377-.45-4.809-1.236l-5.191 1.36 1.385-5.064c-.879-1.488-1.385-3.226-1.385-5.06 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+        </svg>
+        <span>Kirim via WhatsApp</span>
+      </button>
+      <p class="text-xs text-slate-500 text-center mt-3">
+        Data form akan diteruskan langsung ke WhatsApp resmi {siteConfig.name}.
+      </p>
+    </div>
+  </form>
+</div>
+
+<script define:vars={{ whatsappNumber: siteConfig.whatsappNumber }}>
+  const form = document.getElementById('consultation-form');
+  if (form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('form-name');
+      const serviceInput = document.getElementById('form-service');
+      const locationInput = document.getElementById('form-location');
+      const messageInput = document.getElementById('form-message');
+
+      const nameErr = document.getElementById('name-error');
+      const serviceErr = document.getElementById('service-error');
+      const locationErr = document.getElementById('location-error');
+      const messageErr = document.getElementById('message-error');
+
+      let isValid = true;
+
+      // Validation
+      if (!nameInput.value.trim()) {
+        nameErr.classList.remove('hidden');
+        nameInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        nameErr.classList.add('hidden');
+        nameInput.classList.remove('border-rose-500');
+      }
+
+      if (!serviceInput.value) {
+        serviceErr.classList.remove('hidden');
+        serviceInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        serviceErr.classList.add('hidden');
+        serviceInput.classList.remove('border-rose-500');
+      }
+
+      if (!locationInput.value.trim()) {
+        locationErr.classList.remove('hidden');
+        locationInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        locationErr.classList.add('hidden');
+        locationInput.classList.remove('border-rose-500');
+      }
+
+      if (!messageInput.value.trim()) {
+        messageErr.classList.remove('hidden');
+        messageInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        messageErr.classList.add('hidden');
+        messageInput.classList.remove('border-rose-500');
+      }
+
+      if (!isValid) return;
+
+      const text = `Halo PT Adiya Cahaya Gemilang, saya ${nameInput.value.trim()} ingin berkonsultasi mengenai proyek GRC.\n\n` +
+        `• Jenis Pekerjaan: ${serviceInput.value}\n` +
+        `• Lokasi Proyek: ${locationInput.value.trim()}\n` +
+        `• Catatan Kebutuhan: ${messageInput.value.trim()}`;
+
+      const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>
+

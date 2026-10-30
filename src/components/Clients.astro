@@ -1,0 +1,58 @@
+---
+import { clientsData } from '../data/clients';
+---
+
+<section id="klien" class="py-20 sm:py-24 bg-bg-alt border-b border-slate-200/60 scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Pola Konsisten: Eyebrow, Judul, Deskripsi Singkat) -->
+    <div class="max-w-3xl mb-12 sm:mb-16">
+      <span class="inline-block text-xs font-heading font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+        {clientsData.eyebrow}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-primary-dark tracking-tight leading-tight mb-4">
+        {clientsData.title}
+      </h2>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+        {clientsData.description}
+      </p>
+    </div>
+
+    <!-- Grid Klien (Teks, bukan gambar logo) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {clientsData.items.map((client) => (
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+          <div>
+            <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary font-bold text-sm flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+              </svg>
+            </div>
+            
+            <h3 class="text-lg font-heading font-bold text-primary-dark mb-2 leading-snug group-hover:text-primary transition-colors">
+              {client.name}
+            </h3>
+            
+            <p class="text-xs text-slate-500 font-medium leading-relaxed">
+              {client.category}
+            </p>
+          </div>
+
+          <div class="pt-4 mt-6 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+            {client.isVerified ? (
+              <span class="text-emerald-700 font-semibold flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Mitra Resmi
+              </span>
+            ) : (
+              <span class="text-slate-500">Kemitraan Proyek</span>
+            )}
+            <span class="text-accent">&bull;</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+

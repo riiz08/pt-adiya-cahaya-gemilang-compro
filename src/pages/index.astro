@@ -5,40 +5,33 @@ import About from '../components/About.astro';
 import Services from '../components/Services.astro';
 import Advantages from '../components/Advantages.astro';
 import Process from '../components/Process.astro';
+import Projects from '../components/Projects.astro';
+import Clients from '../components/Clients.astro';
+import Contact from '../components/Contact.astro';
 ---
 
 <BaseLayout>
-  <!-- Hero Section (#beranda) -->
+  <!-- 1. Hero Section (#beranda) -->
   <Hero />
 
-  <!-- Section Tentang Kami (#tentang) -->
+  <!-- 2. Section Tentang Kami (#tentang) -->
   <About />
 
-  <!-- Section Layanan (#layanan) -->
+  <!-- 3. Section Layanan (#layanan) -->
   <Services />
 
-  <!-- Section Keunggulan (#keunggulan) -->
+  <!-- 4. Section Keunggulan (#keunggulan) -->
   <Advantages />
 
-  <!-- Section Alur Kerja (#alur) -->
+  <!-- 5. Section Alur Kerja (#alur) -->
   <Process />
 
-  <!-- Section Placeholders Tetap Kosong (Di Luar Scope Tahap 3) -->
-  <!-- TODO: ganti isi section Proyek pada tahap berikutnya -->
-  <section id="proyek" class="min-h-[280px] bg-white flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
-    <div class="max-w-md mx-auto">
-      <span class="text-xs font-bold tracking-widest text-primary/70 uppercase mb-1 block">Section Placeholder</span>
-      <h2 class="text-xl sm:text-2xl font-heading font-bold text-slate-800 mb-2">Portofolio Proyek</h2>
-      <p class="text-slate-500 text-sm">Dokumentasi hasil pemasangan dan fabrikasi GRC akan diisi pada tahap berikutnya.</p>
-    </div>
-  </section>
+  <!-- 6. Section Proyek (#proyek) -->
+  <Projects />
 
-  <!-- TODO: ganti isi section Kontak pada tahap berikutnya -->
-  <section id="kontak" class="min-h-[280px] bg-bg-alt flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
-    <div class="max-w-md mx-auto">
-      <span class="text-xs font-bold tracking-widest text-primary/70 uppercase mb-1 block">Section Placeholder</span>
-      <h2 class="text-xl sm:text-2xl font-heading font-bold text-slate-800 mb-2">Kontak & Lokasi Workshop</h2>
-      <p class="text-slate-500 text-sm">Peta lokasi dan formulir konsultasi akan diisi pada tahap berikutnya.</p>
-    </div>
-  </section>
+  <!-- 7. Section Klien (#klien) -->
+  <Clients />
+
+  <!-- 8. Section Kontak (#kontak) -->
+  <Contact />
 </BaseLayout>
