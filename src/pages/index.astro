@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
 import Services from '../components/Services.astro';
+import Advantages from '../components/Advantages.astro';
+import Process from '../components/Process.astro';
 ---
 
 <BaseLayout>
@@ -15,7 +17,13 @@ import Services from '../components/Services.astro';
   <!-- Section Layanan (#layanan) -->
   <Services />
 
-  <!-- Section Placeholders Tetap Kosong (Di Luar Scope Tahap 2) -->
+  <!-- Section Keunggulan (#keunggulan) -->
+  <Advantages />
+
+  <!-- Section Alur Kerja (#alur) -->
+  <Process />
+
+  <!-- Section Placeholders Tetap Kosong (Di Luar Scope Tahap 3) -->
   <!-- TODO: ganti isi section Proyek pada tahap berikutnya -->
   <section id="proyek" class="min-h-[280px] bg-white flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
     <div class="max-w-md mx-auto">

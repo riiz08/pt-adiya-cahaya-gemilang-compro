@@ -1,0 +1,72 @@
+---
+import { siteConfig } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = siteConfig.seo.title,
+  description = siteConfig.seo.description,
+  canonical,
+} = Astro.props;
+
+const canonicalUrl = canonical || new URL(Astro.url.pathname, siteConfig.seo.siteUrl).href;
+const ogImageUrl = new URL(siteConfig.seo.ogImage, siteConfig.seo.siteUrl).href;
+
+// JSON-LD LocalBusiness sesuai keputusan terkunci:
+// DILARANG memasukkan rating, review, jumlah proyek, atau tahun berdiri yang masih dummy.
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": siteConfig.name,
+  "description": description,
+  "url": siteConfig.seo.siteUrl,
+  "telephone": siteConfig.phones[0],
+  "email": siteConfig.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": siteConfig.address,
+    "addressLocality": "Cibinong",
+    "addressRegion": "Jawa Barat",
+    "addressCountry": "ID"
+  },
+  "areaServed": siteConfig.seo.areaServed.map(area => ({
+    "@type": "AdministrativeArea",
+    "name": area
+  }))
+};
+---
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="keywords" content={siteConfig.seo.keywords.join(', ')} />
+<meta name="robots" content={siteConfig.seo.robots} />
+<meta name="theme-color" content={siteConfig.seo.themeColor} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:locale" content="id_ID" />
+<meta property="og:site_name" content={siteConfig.name} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Schema JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+

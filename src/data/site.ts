@@ -1,6 +1,10 @@
 // Central business & navigation data
 // Data usaha (sumber tunggal, jangan di-hardcode di komponen)
 
+const envSiteUrl = import.meta.env.SITE_URL || (typeof process !== "undefined" ? process.env.SITE_URL : "") || "";
+export const isProduction = Boolean(envSiteUrl && envSiteUrl.trim() !== "");
+export const siteUrl = isProduction ? envSiteUrl.trim() : "https://adiyacahayagemilang.co.id";
+
 export const siteConfig = {
   name: "PT. Adiya Cahaya Gemilang",
   tagline: "Glass Fibre Reinforced Cement",
@@ -14,6 +18,31 @@ export const siteConfig = {
   get whatsappUrl() {
     return `https://wa.me/${this.whatsappNumber}?text=${encodeURIComponent(this.whatsappDefaultMessage)}`;
   },
+  
+  // Data SEO Teknis & On-Page
+  seo: {
+    siteUrl,
+    isProduction,
+    // Title maksimal ~60 karakter (saat ini 54 karakter)
+    title: "PT Adiya Cahaya Gemilang | Jasa & Kontraktor GRC Bogor",
+    // Meta description maksimal ~155 karakter (saat ini 148 karakter)
+    description: "Jasa GRC Bogor & kontraktor GRC Cibinong terpercaya. Fabrikasi & pasang cladding, pilar, list plafon, serta ornamen fasad presisi sesuai lapangan.",
+    keywords: [
+      "jasa GRC Bogor",
+      "kontraktor GRC Cibinong",
+      "GRC Glass Fibre Reinforced Cement",
+      "cladding GRC",
+      "pilar pagar GRC",
+      "list plafon GRC",
+      "ornamen fasad GRC"
+    ],
+    areaServed: ["Bogor", "Cibinong", "Jabodetabek", "Jawa Barat"],
+    themeColor: "#3D2B7A",
+    ogImage: "/og-image.png",
+    // Saklar otomatis index/noindex berdasarkan keberadaan domain production
+    robots: isProduction ? "index, follow" : "noindex, nofollow"
+  },
+
   navLinks: [
     { label: "Beranda", href: "#beranda" },
     { label: "Tentang", href: "#tentang" },
@@ -21,6 +50,7 @@ export const siteConfig = {
     { label: "Proyek", href: "#proyek" },
     { label: "Kontak", href: "#kontak" }
   ],
+
   hero: {
     badge: "Spesialis GRC Terpercaya",
     headline: "Spesialis GRC untuk Fasad & Elemen Arsitektural Bangunan Anda",
@@ -41,4 +71,3 @@ export const siteConfig = {
     ]
   }
 };
-

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://adiyacahayagemilang.co.id/sitemap-index.xml
+

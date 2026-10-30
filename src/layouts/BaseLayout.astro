@@ -1,19 +1,17 @@
 ---
 import '../styles/global.css';
-import { siteConfig } from '../data/site';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Seo from '../components/Seo.astro';
 
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
 }
 
-const {
-  title = `${siteConfig.name} | ${siteConfig.tagline}`,
-  description = siteConfig.description,
-} = Astro.props;
+const { title, description, canonical } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,11 +20,13 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
     
-    <!-- Google Fonts: Poppins (Heading) & Inter (Body) -->
+    <!-- SEO Component (Meta, OG, Twitter, Canonical, JSON-LD) -->
+    <Seo title={title} description={description} canonical={canonical} />
+    
+    <!-- Google Fonts: Poppins (Heading) & Inter (Body) dengan font-display: swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -43,4 +43,3 @@ const {
     <WhatsAppButton floating={true} />
   </body>
 </html>
-
