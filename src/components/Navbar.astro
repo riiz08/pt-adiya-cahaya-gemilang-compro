@@ -1,46 +1,149 @@
 ---
-const navLinks = [
-  { name: 'Beranda', href: '/' },
-  { name: 'Tentang Kami', href: '/about' },
-  { name: 'Layanan', href: '/services' },
-  { name: 'Kontak', href: '/contact' },
-];
+import { Image } from 'astro:assets';
+import logoImg from '../assets/logo.webp';
+import { siteConfig } from '../data/site';
 ---
 
-<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs transition-all">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <div class="flex items-center">
-        <a href="/" class="flex items-center gap-2 font-bold text-xl text-blue-700 tracking-tight">
-          <span class="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-black text-sm">ACG</span>
-          <span>PT Adiya Cahaya Gemilang</span>
-        </a>
-      </div>
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo & Name -->
+      <a href="#beranda" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg p-1">
+        <Image
+          src={logoImg}
+          alt={`Logo ${siteConfig.name}`}
+          class="h-11 w-auto max-w-[120px] object-contain transition-transform group-hover:scale-105"
+          loading="eager"
+        />
+        <div class="flex flex-col">
+          <span class="font-heading font-bold text-base sm:text-lg text-primary tracking-tight leading-tight group-hover:text-primary-dark transition-colors">
+            {siteConfig.name}
+          </span>
+          <span class="text-xs text-slate-500 font-medium tracking-wide">
+            {siteConfig.tagline}
+          </span>
+        </div>
+      </a>
 
-      <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        {navLinks.map((link) => (
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium" aria-label="Menu Utama">
+        {siteConfig.navLinks.map((item) => (
           <a
-            href={link.href}
-            class="text-slate-600 hover:text-blue-600 transition-colors"
+            href={item.href}
+            class="px-3.5 py-2 text-text-main hover:text-primary rounded-md transition-colors hover:bg-slate-50 font-semibold"
           >
-            {link.name}
+            {item.label}
           </a>
         ))}
-        <a
-          href="/contact"
-          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors font-semibold"
-        >
-          Hubungi Kami
-        </a>
       </nav>
 
-      <!-- Mobile menu button (simple display for now) -->
-      <div class="flex md:hidden">
-        <a href="/contact" class="text-xs bg-blue-600 text-white px-3 py-1.5 rounded-md font-semibold">
-          Hubungi
+      <!-- Desktop CTA Button -->
+      <div class="hidden md:flex items-center">
+        <a
+          href={siteConfig.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm hover:shadow flex items-center gap-2 border border-primary/20"
+        >
+          <span>Hubungi Kami</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
         </a>
       </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex md:hidden items-center">
+        <button
+          type="button"
+          id="navbar-toggle-btn"
+          class="p-2.5 rounded-lg text-slate-600 hover:text-primary hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-primary"
+          aria-expanded="false"
+          aria-controls="mobile-nav-menu"
+          aria-label="Buka menu navigasi"
+        >
+          <svg id="icon-open" class="w-6 h-6 block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  <div
+    id="mobile-nav-menu"
+    class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-2 shadow-lg"
+  >
+    {siteConfig.navLinks.map((item) => (
+      <a
+        href={item.href}
+        class="mobile-nav-link block px-3 py-2.5 rounded-lg text-base font-semibold text-text-main hover:text-primary hover:bg-slate-50 transition-colors"
+      >
+        {item.label}
+      </a>
+    ))}
+    <div class="pt-4 border-t border-slate-100">
+      <a
+        href={siteConfig.whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mobile-nav-link flex items-center justify-center gap-2 w-full bg-primary hover:bg-primary-dark text-white px-5 py-3 rounded-lg text-sm font-semibold transition-colors shadow-sm"
+      >
+        <span>Hubungi Kami (WhatsApp)</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+        </svg>
+      </a>
     </div>
   </div>
 </header>
 
+<script>
+  function setupNavbar() {
+    const toggleBtn = document.getElementById('navbar-toggle-btn');
+    const mobileMenu = document.getElementById('mobile-nav-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (!toggleBtn || !mobileMenu || !iconOpen || !iconClose) return;
+
+    function toggleMenu() {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      const newState = !isExpanded;
+      toggleBtn.setAttribute('aria-expanded', String(newState));
+      
+      if (newState) {
+        mobileMenu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+      } else {
+        mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      }
+    }
+
+    function closeMenu() {
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+
+    toggleBtn.addEventListener('click', toggleMenu);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+  }
+
+  // Setup on initial load and handle Astro page transitions if any
+  document.addEventListener('DOMContentLoaded', setupNavbar);
+</script>

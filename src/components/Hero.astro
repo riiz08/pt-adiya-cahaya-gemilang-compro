@@ -1,0 +1,109 @@
+---
+import { siteConfig } from '../data/site';
+---
+
+<section id="beranda" class="relative overflow-hidden bg-gradient-to-b from-bg-alt via-white to-white py-16 sm:py-24 lg:py-28 border-b border-slate-100">
+  <!-- Subtle decorative background accent -->
+  <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-accent/10 blur-3xl pointer-events-none" aria-hidden="true"></div>
+  <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      
+      <!-- Left Content Column -->
+      <div class="lg:col-span-7 text-center lg:text-left">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6">
+          <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+          <span>{siteConfig.hero.badge}</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-heading font-extrabold text-primary-dark tracking-tight leading-[1.18] mb-6">
+          {siteConfig.hero.headline}
+        </h1>
+
+        <!-- Sub-headline -->
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 font-normal">
+          {siteConfig.hero.subheadline}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
+          <a
+            href={siteConfig.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-accent hover:bg-[#b58f3e] text-slate-900 font-heading font-bold text-base shadow-md hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5"
+          >
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.971.53 1.761.815 2.796.815 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.377-.45-4.809-1.236l-5.191 1.36 1.385-5.064c-.879-1.488-1.385-3.226-1.385-5.06 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+            </svg>
+            <span>{siteConfig.hero.ctaPrimary.label}</span>
+          </a>
+
+          <a
+            href={siteConfig.hero.ctaSecondary.href}
+            class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-lg bg-white hover:bg-slate-50 text-primary-dark font-heading font-bold text-base border-2 border-primary/20 hover:border-primary/40 shadow-xs transition-all duration-200"
+          >
+            <span>{siteConfig.hero.ctaSecondary.label}</span>
+          </a>
+        </div>
+
+        <!-- Stats (TODO: ganti dengan data riil jika sudah diverifikasi) -->
+        <div class="pt-8 border-t border-slate-200/80 grid grid-cols-3 gap-3 sm:gap-6">
+          {siteConfig.hero.stats.map((stat) => (
+            <div class="text-center lg:text-left">
+              <div class="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-primary">
+                {stat.value}
+              </div>
+              <div class="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-snug">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Visual Column (Placeholder Image) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-md lg:max-w-none">
+          <!-- Outer decorative border wrapper -->
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 group aspect-[4/3] sm:aspect-[4/3] lg:aspect-[5/4] flex items-center justify-center">
+            
+            <!-- Graphic Illustration / Placeholder Graphic -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-primary-dark via-primary to-slate-800 opacity-95"></div>
+            
+            <!-- Architectural pattern overlay (SVG) -->
+            <div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(circle, #ffffff 1px, transparent 1px); background-size: 24px 24px;"></div>
+
+            <div class="relative z-10 text-center p-8">
+              <div class="inline-flex p-4 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 mb-4 text-accent">
+                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-heading font-bold text-white mb-2">
+                Elemen Arsitektural GRC
+              </h3>
+              <p class="text-xs sm:text-sm text-slate-300 max-w-xs mx-auto">
+                Kustomisasi cetakan fasad, ornamen orisinal, kubah, & lis profil berpresisi tinggi.
+              </p>
+              <div class="mt-4 inline-block px-3 py-1 rounded bg-accent/20 border border-accent/40 text-accent text-xs font-semibold">
+                Fabrikasi & Pemasangan Presisi
+              </div>
+            </div>
+
+            <!-- Bottom info tag -->
+            <div class="absolute bottom-3 left-3 right-3 bg-white/90 backdrop-blur-sm rounded-lg p-3 flex items-center justify-between border border-white/40 shadow-sm text-xs">
+              <span class="font-semibold text-primary-dark">Workshop & Fabrikasi</span>
+              <span class="text-slate-600 font-medium">Cibinong, Bogor</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+

@@ -1,0 +1,37 @@
+---
+import { siteConfig } from '../data/site';
+
+interface Props {
+  floating?: boolean;
+}
+
+const { floating = true } = Astro.props;
+---
+
+{floating ? (
+  <a
+    href={siteConfig.whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Hubungi WhatsApp PT Adiya Cahaya Gemilang"
+    class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group focus:outline-none focus:ring-4 focus:ring-emerald-300"
+  >
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.971.53 1.761.815 2.796.815 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.377-.45-4.809-1.236l-5.191 1.36 1.385-5.064c-.879-1.488-1.385-3.226-1.385-5.06 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+    </svg>
+    <span class="text-sm font-semibold tracking-wide hidden sm:inline-block">Konsultasi WA</span>
+  </a>
+) : (
+  <a
+    href={siteConfig.whatsappUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white px-6 py-3 rounded-lg font-medium shadow transition-all duration-200"
+  >
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.971.53 1.761.815 2.796.815 3.181 0 5.767-2.586 5.768-5.766 0-3.18-2.586-5.766-5.768-5.766zm9.969 5.766c0 5.518-4.482 10-10 10-1.745 0-3.377-.45-4.809-1.236l-5.191 1.36 1.385-5.064c-.879-1.488-1.385-3.226-1.385-5.06 0-5.518 4.482-10 10-10 5.518 0 10 4.482 10 10z"/>
+    </svg>
+    <span>Hubungi WhatsApp</span>
+  </a>
+)}
+
