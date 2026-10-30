@@ -1,64 +1,70 @@
-# Implementation Plan: Navbar, Hero, dan Footer (Company Profile PT Adiya Cahaya Gemilang)
+# Implementation Plan: Perbaikan Footer + Section Tentang Kami & Layanan (PT Adiya Cahaya Gemilang)
 
 ## 1. Overview & Objective
-Membangun kerangka tampilan utama website company profile PT Adiya Cahaya Gemilang (spesialis GRC / Glass Fibre Reinforced Cement, Cibinong, Bogor) pada project Astro di root repository. Cakupan HANYA: Navbar, Hero, Footer. Dokumen ini panduan tingkat tinggi; ikuti keputusan yang sudah dikunci di bawah dan jangan menambah di luar scope.
+Tahap 2 pada project Astro yang sudah memiliki Navbar, Hero, dan Footer. Cakupan HANYA: (a) perbaikan footer, (b) section Tentang Kami (`#tentang`), (c) section Layanan (`#layanan`). Dokumen ini panduan tingkat tinggi; ikuti keputusan yang sudah dikunci dan jangan menambah di luar scope.
 
 ## 2. Prasyarat
-* Project Astro + Tailwind + TypeScript sudah terpasang dan `npm run dev` berjalan. Jika belum, hentikan dan laporkan, jangan inisialisasi ulang.
+* Tahap 1 selesai: `npm run dev` dan `npm run build` berjalan normal.
+* Data usaha tersentralisasi di `src/data/site.ts`. Jika kondisi ini tidak terpenuhi, hentikan dan laporkan.
 
 ## 3. Keputusan yang Sudah Dikunci (jangan diubah)
-* Warna: primary `#3D2B7A`, primary gelap `#2A1D57`, aksen `#C9A24B`, background `#FFFFFF` / `#F5F5F8`, teks `#1F1F2E`
-* Font: Poppins (heading), Inter (body)
-* Gaya: profesional, clean, whitespace lega, mobile-first. Target: kontraktor dan developer.
-* Data usaha (sumber tunggal, jangan di-hardcode di komponen):
-  * Nama: PT. Adiya Cahaya Gemilang | Tagline: Glass Fibre Reinforced Cement
-  * Alamat: Jl. Raya Jakarta Bogor KM 41 RT. 04/04, Kel. Pabuaran, Kec. Cibinong, Kab. Bogor
-  * Telepon: 0813 8353 3007 / 0815 1416 5875
-  * Email: adiyacahayagemilanggrc@gmail.com
-  * WhatsApp: 6281383533007 (dummy, perlu verifikasi)
-* Menu navigasi: Beranda, Tentang, Layanan, Proyek, Kontak (anchor: `#beranda`, `#tentang`, `#layanan`, `#proyek`, `#kontak`)
-* Copy hero:
-  * Headline: "Spesialis GRC untuk Fasad & Elemen Arsitektural Bangunan Anda"
-  * Sub-headline: "Cladding dinding, pilar, hingga list plafon. Diproduksi dan dipasang dengan ukuran presisi sesuai kondisi lapangan."
-  * CTA utama: "Minta Penawaran" (WhatsApp) | CTA kedua: "Lihat Proyek" (#proyek)
-  * Statistik dummy: 50+ Proyek Selesai, 10+ Tahun Pengalaman, 100% Ukuran Sesuai Lapangan
+* Design token, font, dan gaya mengikuti tahap 1 (primary `#3D2B7A`, gelap `#2A1D57`, aksen `#C9A24B`, background selang-seling `#FFFFFF` / `#F5F5F8`, teks `#1F1F2E`; Poppins untuk heading, Inter untuk body).
+* Pola section: label kecil (eyebrow) di atas, judul, deskripsi singkat, lalu isi. Semua section memakai pola yang sama.
+* Logo footer: gunakan file logo ACG asli (yang sama dengan navbar) di dalam wadah putih bersudut membulat. JANGAN memakai versi logo yang diubah menjadi putih polos.
+
+### Konten Tentang Kami (dummy, tandai `TODO: ganti`)
+* Eyebrow: "Tentang Kami"
+* Judul: "Mitra Pekerjaan GRC untuk Proyek Bangunan Anda"
+* Paragraf profil: PT Adiya Cahaya Gemilang adalah perusahaan di Cibinong, Bogor yang bergerak di bidang Glass Fibre Reinforced Cement (GRC): memproduksi dan memasang elemen arsitektural dengan ukuran yang disesuaikan kondisi lapangan.
+* Visi (1 kalimat) dan Misi (3 poin) dummy yang masuk akal
+* Nilai-nilai (3 kartu): Presisi Ukuran, Ketepatan Waktu, Komunikasi Terbuka
+* Fakta singkat: Lokasi workshop Cibinong, Bogor | Direktur: Siti Kokom Safitri (dari surat resmi)
+
+### Konten Layanan (urutan dikunci)
+1. Cladding Tempel Dinding (tebal 2 cm)
+2. Pilar & Pagar GRC
+3. Bawah Plafon & List Plafon
+4. Sudut & Ornamen Fasad
+5. Custom Sesuai Gambar Proyek
+* Setiap layanan: ikon sederhana, judul, deskripsi 1-2 kalimat. Satuan pekerjaan disebut "meter lari (M)" bila perlu.
+* Di bawah daftar layanan: satu blok ajakan "Konsultasikan Kebutuhan Proyek Anda" dengan tombol WhatsApp (nomor dari `site.ts`).
 
 ## 4. Struktur File yang Diharapkan
-* `src/data/site.ts`: data usaha dan menu
-* `src/layouts/BaseLayout.astro`: layout + SEO dasar
-* `src/components/Navbar.astro`, `Hero.astro`, `Footer.astro`, `WhatsAppButton.astro`
-* `src/pages/index.astro`: perakitan halaman
-* Logo ACG di `src/assets/` (pakai placeholder jika belum ada file)
+* `src/components/About.astro`, `Services.astro`, `ServiceCard.astro`
+* Data layanan dan nilai-nilai ditaruh di `src/data/` (bukan di dalam komponen)
+* Perubahan pada `Footer.astro` dan `src/pages/index.astro`
 
 ## 5. High-Level Phases
-### Phase 1: Fondasi
-* Daftarkan design token dan font di konfigurasi Tailwind sesuai bagian 3.
-* Buat data usaha terpusat dan layout dasar dengan metadata SEO.
-### Phase 2: Navbar
-* Logo + nama, menu anchor, tombol "Hubungi Kami" ke WhatsApp, sticky, versi mobile berupa hamburger.
-### Phase 3: Hero
-* Badge, headline, sub-headline, dua CTA, tiga statistik, placeholder gambar.
-### Phase 4: Footer + WhatsApp floating
-* Identitas singkat, navigasi cepat, kontak, copyright, tombol WhatsApp floating di semua halaman.
-### Phase 5: Perakitan & Verifikasi
-* Rakit di `index.astro`, tambahkan anchor kosong (`#tentang`, `#layanan`, `#proyek`, `#kontak`) dengan tinggi minimal agar scroll anchor terlihat.
-* Jalankan `npm run dev` dan `npm run build`.
+### Phase 1: Perbaikan Footer
+* Ganti logo footer sesuai keputusan yang dikunci.
+* Beri ruang bawah pada footer agar tombol WhatsApp floating tidak menimpa teks apa pun.
+* Perbaiki spasi pada copyright dan naikkan kontras teks kecil agar terbaca di background ungu gelap.
+* Hapus teks bawah footer yang duplikat dengan deskripsi di kolom kiri.
+### Phase 2: Section Tentang Kami
+* Bangun komponen sesuai konten terkunci, tampil di `#tentang`, menggantikan placeholder kosong.
+### Phase 3: Section Layanan
+* Bangun komponen daftar layanan berbentuk kartu dan blok ajakan WhatsApp, tampil di `#layanan`, menggantikan placeholder kosong.
+### Phase 4: Perakitan & Verifikasi
+* Rakit di `index.astro` setelah Hero dengan background selang-seling.
+* Jalankan `bun run dev` dan `npm run build`.
 
 ## 6. Di Luar Scope (DILARANG)
-* Mengisi section Tentang, Layanan, Proyek, Klien, Kontak
-* Menambah halaman baru, library UI, atau dependency di luar yang sudah ada
-* Mengubah warna, font, atau copy yang sudah dikunci
+* Mengisi section Proyek, Klien, Kontak, Keunggulan, Alur Kerja (placeholder tetap kosong)
+* Menambah halaman, library UI, atau dependency baru
+* Mengubah Navbar, Hero, warna, font, atau copy tahap 1
 * Mengubah konfigurasi inti atau folder `.git`
 
 ## 7. Acceptance Criteria (bisa dicek)
-* [x] Navbar sticky; klik menu scroll ke anchor yang benar
-* [x] Hamburger berfungsi di lebar layar ≤ 768px
-* [x] Semua tombol WhatsApp membuka `wa.me/` dengan nomor dari `site.ts`
-* [x] Tidak ada nama, alamat, atau kontak yang di-hardcode di komponen
-* [x] Tidak ada horizontal scroll di lebar 360px
+* [x] Logo footer menampilkan huruf "ACG" dengan jelas, tidak berupa bentuk polos
+* [x] Tombol WhatsApp floating tidak menutupi teks di footer pada lebar 360px maupun desktop
+* [x] Copyright terbaca benar ("© 2026 PT. Adiya Cahaya Gemilang...") dengan kontras jelas
+* [x] Klik menu "Tentang" dan "Layanan" scroll ke section yang benar tanpa tertutup navbar sticky
+* [x] Lima layanan tampil dengan urutan yang dikunci
+* [x] Grid layanan: 1 kolom di mobile, 2-3 kolom di desktop, tanpa horizontal scroll di 360px
+* [x] Semua tombol WhatsApp memakai nomor dari `site.ts`
 * [x] `npm run build` sukses tanpa error atau warning TypeScript
 
 ## 8. Notes untuk Implementer
-* Semua konten dummy ditandai komentar `TODO: ganti` agar mudah dicari.
-* Jika ada hal yang ambigu, ambil opsi paling sederhana dan catat di akhir laporan. Jangan menambah fitur.
+* Semua konten dummy ditandai komentar `TODO: ganti`.
+* Jika ada hal ambigu, ambil opsi paling sederhana dan catat di laporan. Jangan menambah fitur.
 * Di akhir, laporkan daftar file yang dibuat/diubah.

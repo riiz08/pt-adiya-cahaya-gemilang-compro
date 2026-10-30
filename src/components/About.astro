@@ -1,0 +1,117 @@
+---
+import { aboutData } from '../data/about';
+---
+
+<section id="tentang" class="py-20 sm:py-24 bg-white border-b border-slate-200/60 scroll-mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Pola Konsisten: Eyebrow, Judul, Deskripsi Singkat) -->
+    <div class="max-w-3xl mb-12 sm:mb-16">
+      <span class="inline-block text-xs font-heading font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+        {aboutData.eyebrow}
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-primary-dark tracking-tight leading-tight mb-4">
+        {aboutData.title}
+      </h2>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+        {aboutData.profileParagraph}
+      </p>
+    </div>
+
+    <!-- Quick Facts Bar -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16 p-4 sm:p-6 bg-bg-alt rounded-2xl border border-slate-200/80">
+      {aboutData.facts.map((fact) => (
+        <div class="flex flex-col sm:border-r last:border-r-0 border-slate-200/80 sm:px-4 py-2 sm:py-0">
+          <span class="text-xs uppercase font-medium text-slate-500 tracking-wider mb-1">
+            {fact.label}
+          </span>
+          <span class="text-base font-heading font-bold text-primary-dark">
+            {fact.value}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Visi & Misi Box -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+      <!-- Visi (TODO: ganti) -->
+      <div class="lg:col-span-5 bg-gradient-to-br from-primary to-primary-dark text-white rounded-2xl p-8 sm:p-10 shadow-md flex flex-col justify-between">
+        <div>
+          <span class="text-accent text-xs font-heading font-bold uppercase tracking-wider block mb-2">Visi Perusahaan</span>
+          <h3 class="text-xl sm:text-2xl font-heading font-bold leading-snug mb-4">
+            Komitmen Keunggulan
+          </h3>
+          <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+            {aboutData.vision}
+          </p>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/20 text-xs text-accent font-medium">
+          PT Adiya Cahaya Gemilang &bull; Cibinong, Bogor
+        </div>
+      </div>
+
+      <!-- Misi (TODO: ganti) -->
+      <div class="lg:col-span-7 bg-bg-alt rounded-2xl p-8 sm:p-10 border border-slate-200/80 flex flex-col justify-center">
+        <span class="text-primary text-xs font-heading font-bold uppercase tracking-wider block mb-2">Misi Perusahaan</span>
+        <h3 class="text-xl sm:text-2xl font-heading font-bold text-primary-dark mb-6">
+          Langkah Strategis Pelaksanaan
+        </h3>
+        <ul class="space-y-4">
+          {aboutData.missions.map((mission, idx) => (
+            <li class="flex items-start gap-3.5">
+              <span class="w-6 h-6 rounded-full bg-primary/10 text-primary font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
+                {idx + 1}
+              </span>
+              <p class="text-slate-700 text-sm sm:text-base leading-relaxed">
+                {mission}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Nilai-Nilai Perusahaan (3 Cards) -->
+    <div>
+      <div class="mb-8">
+        <h3 class="text-2xl font-heading font-bold text-primary-dark tracking-tight">
+          Nilai Utama Layanan
+        </h3>
+        <p class="text-slate-600 text-sm mt-1">
+          Prinsip dasar yang menjadi pedoman kami dalam menangani setiap proyek GRC.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        {aboutData.values.map((val) => (
+          <div class="bg-white rounded-xl p-6 sm:p-8 border border-slate-200 hover:border-primary/40 shadow-xs hover:shadow-md transition-all duration-200 group">
+            <div class="w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary text-primary group-hover:text-white flex items-center justify-center mb-6 transition-colors">
+              {val.icon === 'ruler' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+                </svg>
+              )}
+              {val.icon === 'clock' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              )}
+              {val.icon === 'chat' && (
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+              )}
+            </div>
+            <h4 class="text-lg font-heading font-bold text-primary-dark mb-2">
+              {val.title}
+            </h4>
+            <p class="text-sm text-slate-600 leading-relaxed font-normal">
+              {val.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

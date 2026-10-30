@@ -1,33 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
 ---
 
 <BaseLayout>
   <!-- Hero Section (#beranda) -->
   <Hero />
 
-  <!-- Section Placeholders (Scope pembatasan: hanya anchor kosong dengan tinggi minimal) -->
-  <!-- TODO: ganti isi section Tentang pada issue berikutnya -->
-  <section id="tentang" class="min-h-[280px] bg-bg-alt flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
-    <div class="max-w-md mx-auto">
-      <span class="text-xs font-bold tracking-widest text-primary/70 uppercase mb-1 block">Section Placeholder</span>
-      <h2 class="text-xl sm:text-2xl font-heading font-bold text-slate-800 mb-2">Tentang PT Adiya Cahaya Gemilang</h2>
-      <p class="text-slate-500 text-sm">Bagian profil & legalitas perusahaan akan diisi pada tahap berikutnya.</p>
-    </div>
-  </section>
+  <!-- Section Tentang Kami (#tentang) -->
+  <About />
 
-  <!-- TODO: ganti isi section Layanan pada issue berikutnya -->
-  <section id="layanan" class="min-h-[280px] bg-white flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
-    <div class="max-w-md mx-auto">
-      <span class="text-xs font-bold tracking-widest text-primary/70 uppercase mb-1 block">Section Placeholder</span>
-      <h2 class="text-xl sm:text-2xl font-heading font-bold text-slate-800 mb-2">Layanan & Produk GRC</h2>
-      <p class="text-slate-500 text-sm">Katalog cladding, pilar, lis profil, & ornamen GRC akan diisi pada tahap berikutnya.</p>
-    </div>
-  </section>
+  <!-- Section Layanan (#layanan) -->
+  <Services />
 
-  <!-- TODO: ganti isi section Proyek pada issue berikutnya -->
-  <section id="proyek" class="min-h-[280px] bg-bg-alt flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
+  <!-- Section Placeholders Tetap Kosong (Di Luar Scope Tahap 2) -->
+  <!-- TODO: ganti isi section Proyek pada tahap berikutnya -->
+  <section id="proyek" class="min-h-[280px] bg-white flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
     <div class="max-w-md mx-auto">
       <span class="text-xs font-bold tracking-widest text-primary/70 uppercase mb-1 block">Section Placeholder</span>
       <h2 class="text-xl sm:text-2xl font-heading font-bold text-slate-800 mb-2">Portofolio Proyek</h2>
@@ -35,8 +25,8 @@ import Hero from '../components/Hero.astro';
     </div>
   </section>
 
-  <!-- TODO: ganti isi section Kontak pada issue berikutnya -->
-  <section id="kontak" class="min-h-[280px] bg-white flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
+  <!-- TODO: ganti isi section Kontak pada tahap berikutnya -->
+  <section id="kontak" class="min-h-[280px] bg-bg-alt flex flex-col items-center justify-center border-b border-slate-200/60 p-8 text-center scroll-mt-20">
     <div class="max-w-md mx-auto">
       <span class="text-xs font-bold tracking-widest text-primary/70 uppercase mb-1 block">Section Placeholder</span>
       <h2 class="text-xl sm:text-2xl font-heading font-bold text-slate-800 mb-2">Kontak & Lokasi Workshop</h2>
